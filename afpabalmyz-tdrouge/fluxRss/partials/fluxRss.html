@@ -1,0 +1,24 @@
+<h1><?= $result->channel->title; ?></h1>
+
+<?php foreach($result->channel->item as $entry){ 
+    
+    $description = (string)$entry->description;
+    $cleanDescription = strip_tags($description); ?>
+
+    <!-- <?php if ($entry->mediaContent){
+        $image = $entry->mediaContent['url'];
+        }
+        else{ $image = $entry->enclosure['url'];} ?> -->
+
+    <div class="card" style="width: 100%;margin-left:20px;margin-bottom:15px">
+        <img class="card-img-top" src="<?= $entry->enclosure['url']; ?> <?= $entry->mediaContent['url']; ?>" alt="Card image cap" style="width:30% ;">
+        <div class="card-body">
+            <h5 class="card-title"><?= $entry->title ?></h5>
+            <p class="card-text"><?= $cleanDescription ?></p>
+            <a href="<?= $entry->link ?>" class="btn btn-primary">Voir l'article</a>
+
+            
+        </div>
+    </div>
+            
+<?php } ?>        
